@@ -1,42 +1,52 @@
 from diagrams import Diagram, Cluster
-from diagrams.aws.compute import ECS, Lambda
-from diagrams.aws.database import RDS, ElastiCache
-from diagrams.aws.network import ELB, APIGateway
-from diagrams.aws.integration import SQS
-from diagrams.aws.storage import S3
+from diagrams.aws.compute import Lambda
+from diagrams.aws.database import Dynamodb
+from diagrams.aws.integration import SQS, Eventbridge
 from diagrams.aws.security import Cognito
 from diagrams.aws.mobile import APIGateway
+from diagrams.aws.network import ElasticLoadBalancing
+from diagrams.aws.analytics import Kinesis
 
-with Diagram("Arquitectura App de Transporte en AWS", show=False):
+with Diagram("Arquitectura AWS App de Transporte", show=False):
     # Clientes
-    api_gateway = APIGateway("API Gateway")
-
-    # Autenticación
-    cognito = Cognito("Cognito")
-
-    with Cluster("Servicios de Aplicación"):
-        app_services = [
-            ECS("Servicio de Usuarios"),
-            ECS("Servicio de Viajes"),
-            ECS("Servicio de Pagos"),
-            Lambda("Servicio de Notificaciones")
-        ]
-
-    # Base de datos y caché
-    db = RDS("Base de Datos")
-    cache = ElastiCache("Cache")
-
-    # Cola de mensajes
-    queue = SQS("Cola de Eventos")
-
-    # Almacenamiento
-    storage = S3("Almacenamiento")
+    api = APIGateway("API Gateway")
+    
+    with Cluster("Servicios de Autenticación"):
+        cognito = Cognito("Cognito")
+    
+    with Cluster("Procesamiento de Solicitudes"):
+        solicitud_viaje = Lambda("Solicitar Viaje")
+        buscar_conductor = Lambda("Buscar Conductor")
+        confirmar_viaje = Lambda("Confirmar Viaje")
+    
+    with Cluster("Gestión de Viajes"):
+        iniciar_viaje = Lambda("Iniciar Viaje")
+        finalizar_viaje = Lambda("Finalizar Viaje")
+        calcular_tarifa = Lambda("Calcular Tarifa")
+    
+    with Cluster("Procesamiento de Pagos"):
+        procesar_pago = Lambda("Procesar Pago")
+    
+    with Cluster("Almacenamiento de Datos"):
+        db_usuarios = Dynamodb("DB Usuarios")
+        db_viajes = Dynamodb("DB Viajes")
+        db_pagos = Dynamodb("DB Pagos")
+    
+    cola_solicitudes = SQS("Cola de Solicitudes")
+    stream_ubicaciones = Kinesis("Stream de Ubicaciones")
+    bus_eventos = Eventbridge("Event Bus")
 
     # Flujo de la aplicación
-    api_gateway >> cognito
-    cognito >> app_services
-    api_gateway >> app_services
-    app_services >> db
-    app_services >> cache
-    app_services >> queue
-    app_services >> storage
+    api >> cognito
+    api >> solicitud_viaje >> cola_solicitudes >> buscar_conductor
+    buscar_conductor >> confirmar_viaje
+    confirmar_viaje >> iniciar_viaje >> stream_ubicaciones
+    stream_ubicaciones >> finalizar_viaje >> calcular_tarifa >> procesar_pago
+    
+    # Interacciones con bases de datos
+    [solicitud_viaje, buscar_conductor, confirmar_viaje] >> db_usuarios
+    [iniciar_viaje, finalizar_viaje, calcular_tarifa] >> db_viajes
+    procesar_pago >> db_pagos
+    
+    # Event-driven architecture
+    [solicitud_viaje, confirmar_viaje, iniciar_viaje, finalizar_viaje, procesar_pago] >> bus_eventos
