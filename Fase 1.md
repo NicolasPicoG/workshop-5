@@ -2,8 +2,42 @@
 
 Prompt #1 GPT
 
+@startuml
+actor Usuario as U
+participant "App de Transporte" as App
+participant "Sistema de Gestión de Conductores" as SGC
+participant "Conductor" as C
 
-Pront #1 CLAUDE
+U -> App: Solicitar viaje
+App -> SGC: Buscar conductor disponible
+SGC -> C: Notificar solicitud de viaje
+C -> SGC: Aceptar solicitud
+SGC -> App: Conductor asignado
+App -> U: Conductor asignado (datos del conductor)
+U -> C: Confirmar ubicación
+C -> U: Conductor en camino
+C -> App: Conductor ha llegado
+App -> U: Notificar llegada del conductor
+U -> C: Iniciar viaje
+C -> App: Viaje en curso
+App -> U: Viaje en curso
+C -> App: Finalizar viaje
+App -> U: Notificar fin del viaje
+U -> App: Realizar pago
+App -> C: Confirmar pago
+@enduml
+
+
+Descripción:
+Usuario solicita un viaje desde la app.
+La App de Transporte consulta al Sistema de Gestión de Conductores (SGC) para encontrar un conductor disponible.
+El Sistema de Gestión de Conductores notifica a los conductores cercanos.
+Un Conductor acepta la solicitud, y la información se devuelve al usuario.
+El Usuario confirma la ubicación y el Conductor se dirige hacia él.
+Al llegar, el conductor notifica a la App, que a su vez notifica al usuario.
+El Viaje comienza y, al finalizar, el pago se procesa a través de la app.
+
+Prompt #1 CLAUDE
 
 ```
 sequenceDiagram
