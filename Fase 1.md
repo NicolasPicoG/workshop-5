@@ -80,12 +80,13 @@ sequenceDiagram
 Prompt #2 GPT
 
 ```
-![Diagrama de secuencia generado por GPT](../src/images/gpt%20prompt2.webp)
+![Diagrama de secuencia generado por GPT](../src/images/gpt-prompt2.webp)
 ```
 
 Prompt #2 CLAUDE
 
 ```
+![Diagrama de secuencia generado por GPT](../src/images/gpt-prompt-2)
 
 ```
 
