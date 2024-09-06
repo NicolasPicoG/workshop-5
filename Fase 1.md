@@ -91,4 +91,16 @@ Prompt #2 CLAUDE
 ```
 
 
+Prompt #3 GPT
 
+### Ahora ayúdame a crear el diagrams de arquitectura utilizando la librería Diagram y Python para pintarla suponiendo que uso AWS
+
+```
+![Diagrama de secuencia generado por GPT](../src/images/gpt-prompt2.webp)
+```
+
+Prompt #3 CLAUDE
+
+### Ahora ayúdame a crear el diagrams de arquitectura utilizando la librería Diagram y Python para pintarla suponiendo que uso AWS
+```
+![Diagrama de secuencia generado por GPT](../src/images/gpt-prompt-2)
