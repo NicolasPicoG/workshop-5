@@ -33,7 +33,7 @@ Usuario solicita un viaje desde la app.
 La App de Transporte consulta al Sistema de Gestión de Conductores (SGC) para encontrar un conductor disponible.
 El Sistema de Gestión de Conductores notifica a los conductores cercanos.
 Un Conductor acepta la solicitud, y la información se devuelve al usuario.
-El Usuario confirma la ubicación y el Conductor se dirige hacia él.
+El Usuario confirma la ubicación y el Conductor se dirige hacia ��l.
 Al llegar, el conductor notifica a la App, que a su vez notifica al usuario.
 El Viaje comienza y, al finalizar, el pago se procesa a través de la app.
 
@@ -76,3 +76,18 @@ sequenceDiagram
     App->>Sistema: Registra calificaciones
 
 ```
+
+Prompt #2 GPT
+
+```
+![Diagrama de secuencia generado por GPT](../src/images/gpt%20prompt2.webp)
+```
+
+Prompt #2 CLAUDE
+
+```
+
+```
+
+
+
