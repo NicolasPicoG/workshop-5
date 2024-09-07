@@ -5,7 +5,6 @@
 ### GPT
 
 ```
-@startuml
 actor Usuario as U
 participant "App de Transporte" as App
 participant "Sistema de Gestión de Conductores" as SGC
@@ -28,7 +27,6 @@ C -> App: Finalizar viaje
 App -> U: Notificar fin del viaje
 U -> App: Realizar pago
 App -> C: Confirmar pago
-@enduml
 ```
 
 ### CLAUDE
