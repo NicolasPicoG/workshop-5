@@ -94,4 +94,219 @@ sequenceDiagram
 
 </details>
 
-![Diagrama UML generado por Claude](../Iniciativa/src/images/UML-Claude.svg)
+![Diagrama de Secuencia generado por Claude](../Iniciativa/src/images/Secuencia.svg)
+
+
+
+## Prompt a Claude
+> [!question] Prompt
+> genera el diagrama de interacción de entidades
+
+
+### Respuesta de Claude
+
+<details>
+<summary>Haz clic para ver la respuesta de Claude</summary>
+
+classDiagram
+    class Equipo {
+        +realizarDailyMeeting()
+        +reportarImpedimento()
+        +recibirSolucion()
+    }
+    class Transcripcion {
+        +contenido
+        +fecha
+        +generarTranscripcion()
+    }
+    class IAGenerativa {
+        +analizarTranscripcion()
+        +detectarImpedimentos()
+        +clasificarImpedimento()
+        +proponerSolucion()
+        +escalarImpedimento()
+    }
+    class Impedimento {
+        +tipo
+        +descripcion
+        +estado
+        +actualizarEstado()
+    }
+    class Especialista {
+        +recibirNotificacion()
+        +proporcionarSolucion()
+    }
+    class GerenteProyecto {
+        +recibirNotificacionEscalada()
+        +participarEnReunion()
+    }
+    class Slack {
+        +enviarMensaje()
+        +recibirMensaje()
+    }
+    class SistemaCalendario {
+        +agendarReunion()
+        +notificarParticipantes()
+    }
+
+    Equipo --> Transcripcion : genera
+    Transcripcion --> IAGenerativa : es analizada por
+    IAGenerativa --> Impedimento : detecta y crea
+    IAGenerativa --> Especialista : notifica
+    IAGenerativa --> GerenteProyecto : notifica si escala
+    IAGenerativa --> Equipo : propone solución
+    Especialista --> Impedimento : resuelve
+    GerenteProyecto --> Impedimento : supervisa
+    IAGenerativa --> Slack : utiliza para notificar
+    IAGenerativa --> SistemaCalendario : utiliza para agendar
+    SistemaCalendario --> Equipo : notifica
+    SistemaCalendario --> Especialista : notifica
+    SistemaCalendario --> GerenteProyecto : notifica
+
+</details>
+
+![Diagrama de Interacción de Entidades generado por Claude](../Iniciativa/src/images/Interaccion-entidades.svg)
+
+
+## Prompt a Claude Arquitectura Propuesta Iteración 1
+
+> [!question] Prompt
+> Ahora ayúdame a crear el diagrama de arquitectura para la iniciativa utilizando la librería Diagrams y Python para pintarla suponiendo que uso AWS. Ten en cuenta que la solución debe ser escalable, debe poder soportar concurrencia de hasta 1000 usuario en máximo 10 minutos, debe poder integrarse con Slack y debe recibir las transcripciones de los dailies.
+
+### Respuesta de Claude Arquitectura Propuesta Iteración 1
+
+<details>
+<summary>Haz clic para ver la respuesta de Claude</summary>
+from diagrams import Diagram, Cluster
+from diagrams.aws.compute import Lambda
+from diagrams.aws.database import Dynamodb
+from diagrams.aws.integration import SQS, EventBridge
+from diagrams.aws.ml import Comprehend
+from diagrams.aws.network import APIGateway
+from diagrams.aws.storage import S3
+from diagrams.saas.chat import Slack
+from diagrams.aws.security import Cognito
+
+with Diagram("Arquitectura de Gestión Inteligente de Impedimentos", show=False):
+    # Entrada de datos
+    api = APIGateway("API Gateway")
+    auth = Cognito("Autenticación")
+
+    with Cluster("Procesamiento de Transcripciones"):
+        sqs_transcriptions = SQS("Cola de Transcripciones")
+        lambda_process = Lambda("Procesador de Transcripciones")
+        comprehend = Comprehend("Análisis de Texto")
+
+    with Cluster("Gestión de Impedimentos"):
+        eventbridge = EventBridge("Event Bridge")
+        lambda_impediment = Lambda("Gestor de Impedimentos")
+        dynamodb = Dynamodb("Base de Datos")
+
+    with Cluster("Integración Externa"):
+        lambda_slack = Lambda("Integración Slack")
+        slack = Slack("Slack")
+
+    s3 = S3("Almacenamiento de Transcripciones")
+
+    # Flujo de datos
+    api >> auth
+    auth >> sqs_transcriptions
+    sqs_transcriptions >> lambda_process
+    lambda_process >> comprehend
+    lambda_process >> s3
+    lambda_process >> eventbridge
+    
+    eventbridge >> lambda_impediment
+    lambda_impediment >> dynamodb
+    lambda_impediment >> lambda_slack
+    
+    lambda_slack >> slack
+
+
+</details>
+
+
+## Prompt a Claude Arquitectura Propuesta Iteración 2
+
+> [!question] Prompt
+> Ahora ayúdame a crear el diagrama de arquitectura para la iniciativa utilizando la librería Diagrams y Python para pintarla suponiendo que uso AWS. Ten en cuenta que la solución debe ser escalable, debe poder soportar concurrencia de hasta 1000 usuario en máximo 10 minutos, debe poder integrarse con Slack y debe recibir las transcripciones de los dailies.
+
+### Respuesta de Claude Arquitectura Propuesta Iteración 2
+
+<details>
+<summary>Haz clic para ver la respuesta de Claude</summary>
+from diagrams import Diagram, Cluster, Edge
+from diagrams.aws.compute import ECS, Lambda, ElasticContainerServiceService
+from diagrams.aws.database import Dynamodb, ElastiCache
+from diagrams.aws.integration import SQS, SNS, EventBridge
+from diagrams.aws.ml import Comprehend
+from diagrams.aws.network import APIGateway, ELB
+from diagrams.aws.storage import S3
+from diagrams.aws.security import Cognito
+from diagrams.aws.management import Cloudwatch
+from diagrams.saas.chat import Slack
+
+graph_attr = {
+    "fontsize": "45",
+    "bgcolor": "transparent"
+}
+
+with Diagram("Arquitectura de Microservicios para Gestión Inteligente de Impedimentos", show=False, direction="TB", graph_attr=graph_attr):
+    # Entrada de datos
+    api = APIGateway("API Gateway")
+    auth = Cognito("Autenticación")
+
+    with Cluster("Ingesta y Procesamiento"):
+        sqs_transcriptions = SQS("Cola de Transcripciones")
+        with Cluster("Microservicio de Procesamiento"):
+            nlp_service = ECS("Servicio NLP")
+            comprehend = Comprehend("Análisis de Texto")
+
+    with Cluster("Gestión de Impedimentos"):
+        eventbridge = EventBridge("Event Bridge")
+        with Cluster("Microservicio de Impedimentos"):
+            impediment_service = ECS("Servicio de Impedimentos")
+            impediment_db = Dynamodb("DB Impedimentos")
+        
+        with Cluster("Microservicio de Resolución"):
+            resolution_service = ECS("Servicio de Resolución")
+            resolution_db = Dynamodb("DB Resoluciones")
+
+    with Cluster("Notificaciones"):
+        sns = SNS("Servicio de Notificaciones")
+        with Cluster("Microservicio de Integración Slack"):
+            slack_service = Lambda("Integración Slack")
+        slack = Slack("Slack")
+
+    with Cluster("Microservicio de Calendario"):
+        calendar_service = ECS("Servicio de Calendario")
+        calendar_cache = ElastiCache("Cache de Calendario")
+
+    s3 = S3("Almacenamiento de Transcripciones")
+    cloudwatch = Cloudwatch("Monitoreo")
+
+    # Flujo de datos
+    api >> Edge(label="1. Ingesta") >> auth
+    auth >> sqs_transcriptions
+    sqs_transcriptions >> Edge(label="2. Procesa") >> nlp_service
+    nlp_service - comprehend
+    nlp_service >> s3
+    nlp_service >> Edge(label="3. Detecta") >> eventbridge
+    
+    eventbridge >> Edge(label="4. Gestiona") >> impediment_service
+    impediment_service - impediment_db
+    
+    impediment_service >> Edge(label="5. Resuelve") >> resolution_service
+    resolution_service - resolution_db
+    
+    resolution_service >> Edge(label="6. Notifica") >> sns
+    sns >> slack_service
+    slack_service >> slack
+    
+    sns >> Edge(label="7. Agenda") >> calendar_service
+    calendar_service - calendar_cache
+
+    cloudwatch << Edge(label="Logs & Métricas") << [nlp_service, impediment_service, resolution_service, slack_service, calendar_service]
+
+
+</details>
