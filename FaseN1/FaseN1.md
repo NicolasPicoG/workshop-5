@@ -68,7 +68,6 @@ sequenceDiagram
     App->>Sistema: Registra calificaciones
 
 ```
-
 ## Prompt N2 - Me puedes mostrar la gráfica de ese lenguaje?
 
 ### GPT
