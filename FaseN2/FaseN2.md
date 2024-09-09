@@ -126,12 +126,6 @@ Los beneficios que obtiene el cliente al utilizar un **Sistema de gestión intel
 Estos beneficios hacen que un sistema de este tipo sea una herramienta valiosa para cualquier organización que trabaje en entornos ágiles, mejorando tanto la productividad interna como los resultados finales del proyecto.
 ```
 
-### CLAUDE
-
-```
-
-```
-
 ## Prompt N3 - ¿Cómo es el customer journey normal de un cliente que usa un [Sistemas de gestión inteligente de impedimentos en tiempo real para proyectos ágiles]? Descríbeme paso a paso todas las interacciones
 
 ### GPT
@@ -173,13 +167,6 @@ El **Customer Journey** de un cliente que utiliza un **Sistema de gestión intel
 
 Este recorrido refleja cómo el sistema no solo resuelve problemas inmediatos de gestión de impedimentos, sino que también impulsa mejoras continuas a largo plazo en los proyectos ágiles del cliente.
 ```
-
-### CLAUDE
-
-```
-
-```
-
 ## Planeación del sistema desde los casos de uso
 
 ## Prompt N1 - Eres un analista de software experto. Estoy construyendo un MVP de un [Sistema de gestión inteligente de impedimentos en tiempo real para proyectos ágiles] que sólamente haga [Leer la transcripción, identificar los impedimentos reportados y futuros impedimentos, agendar sesiones con las personas que puedan ayudar a resolver los impedimentos]. Enumera y describe brevemente los casos de uso más importantes a implementar para lograr una funcionalidad básica
@@ -217,11 +204,6 @@ Para construir el MVP de un **Sistema de gestión inteligente de impedimentos en
    - **Objetivo**: Facilitar el seguimiento de impedimentos y asegurar que no queden sin resolver.
 
 Implementar estos casos de uso garantizará una funcionalidad básica eficiente para la versión MVP del sistema.
-```
-
-### CLAUDE
-```
-
 ```
 
 ## Prompt N2
@@ -281,6 +263,9 @@ plt.imshow(img)
 plt.axis('off')
 plt.show()
 
+![Diagrama UML generado por GPT](./src/images/GPTPromt2-DiagramaUML.PNG)
+![Diagrama UML generado por GPT](./src/images/GPTPromt2-DiagramaUML1.PNG)
+
 ### Descripción:
 - **Visitor**: Un usuario no autenticado que solo puede acceder a la funcionalidad de lectura de transcripción.
 - **Usuario Logueado**: Un usuario autenticado que puede identificar impedimentos, predecir futuros bloqueos, clasificarlos, agendar sesiones y recibir notificaciones.
@@ -288,11 +273,7 @@ plt.show()
 
 Este diagrama captura los principales casos de uso y las interacciones entre usuarios.
 ```
-
-### CLAUDE
-```
-
-```
+![Diagrama UML generado por GPT](./src/images/GPTPromt2-DiagramaUML1.PNG)
 
 ## Diseñemos ahora las entidades principales para la base de datos:
 
@@ -350,10 +331,6 @@ En un **Sistema de gestión inteligente de impedimentos en tiempo real para proy
 Estas entidades forman la base del sistema, permitiendo gestionar eficientemente los impedimentos, el avance de los proyectos y la asignación de responsabilidades.
 ```
 
-### CLAUDE
-```
-
-```
 
 ## Prompt N2 - Eres un arquitecto de software. Eres capaz de diseñar, explicar y diagramar los diferentes aspectos de un sistema de software. 
 Estoy construyendo un sistema de [Sistemas de gestión Inteligente de impedimentos en tiempo real para proyectos ágiles]. He definido las entidades [Impedimento, proyecto y usuario resolutor], con sus campos y relaciones.
@@ -440,11 +417,6 @@ ServicioUsuarios --> BDUsuarios
 Al haber definido las relaciones, podemos empezar a trabajar en los flujos de interacción y lógica específica para la detección y gestión de impedimentos, como algoritmos de asignación de resolutores o estrategias de notificación. Si tienes alguna otra área específica que te gustaría desarrollar más a fondo, podemos profundizar en ello.
 ```
 
-### CLAUDE
-```
-
-```
-
 ## Prompt N3 - Generame un diagrama Mermaid de este sistema
 
 ### GPT
@@ -491,11 +463,6 @@ graph TD
 3. **Capa de Persistencia**: Base de datos relacionales que almacenan los datos de `Proyectos`, `Impedimentos` y `Usuarios`.
 
 Este diagrama organiza claramente las diferentes capas del sistema y sus interacciones principales. Puedes utilizar este código en cualquier herramienta que soporte **Mermaid** para visualizar el diagrama.
-```
-
-### CLAUDE
-```
-
 ```
 
 ## Generar el diagrama de arquitectura con DiagramGPT
@@ -594,4 +561,5 @@ graph TD
 - **Balanceo de Carga**: **ALB** asegura la distribución del tráfico a través de los microservicios, evitando sobrecargas.
 
 Este diseño ofrece una solución robusta y escalable para gestionar impedimentos en tiempo real en proyectos ágiles, aprovechando las mejores prácticas de AWS en una arquitectura de microservicios.
-```
+
+![Diagrama de arquitectura generado por GPT](./src/images/GPTPromt1-ArquitecturaAWS.PNG)
