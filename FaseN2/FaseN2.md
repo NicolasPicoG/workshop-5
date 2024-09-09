@@ -264,7 +264,6 @@ plt.axis('off')
 plt.show()
 
 ![Diagrama UML generado por GPT](./src/images/GPTPromt2-DiagramaUML.PNG)
-![Diagrama UML generado por GPT](./src/images/GPTPromt2-DiagramaUML1.PNG)
 
 ### Descripción:
 - **Visitor**: Un usuario no autenticado que solo puede acceder a la funcionalidad de lectura de transcripción.
@@ -272,10 +271,10 @@ plt.show()
 - **Resolutor**: Persona encargada de resolver impedimentos, quien interactúa en el caso de uso de agendamiento de sesiones.
 
 Este diagrama captura los principales casos de uso y las interacciones entre usuarios.
-```
+
 ![Diagrama UML generado por GPT](./src/images/GPTPromt2-DiagramaUML1.PNG)
 
-## Diseñemos ahora las entidades principales para la base de datos:
+# Diseñemos ahora las entidades principales para la base de datos:
 
 ## Prompt N1 - Eres un arquitecto de software experto. Cuales son las 3 entidades de modelo de datos esenciales en un sistema de [Sistemas de gestión Inteligente de impedimentos en tiempo real para proyectos ágiles]? Dame algunos campos esenciales de cada una y cómo se relacionan
 
@@ -400,6 +399,8 @@ ServicioUsuarios --> BDUsuarios
 
 @enduml
 ```
+
+![Diagrama de componentes generado por GPT](./src/images/GPTPromt2-DiagramaComponentes.PNG)
 
 ### Explicación del Diagrama:
 
