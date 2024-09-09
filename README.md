@@ -1,17 +1,13 @@
 # 🚀 Workshop 5
 
-¡Bienvenido al repositorio del **Workshop N°5**! 🎉 Aquí encontrarás la solución completa del workshop, organizada en tres fases.
+¡Bienvenido al repositorio del **Workshop N°5**! 🎉 Aquí encontrarás la solución completa del workshop, organizada en tres fases. Este proyecto tiene como objetivo resolver los desafíos presentados en el Workshop N°5. A lo largo de este documento, te guiaremos a través de las tres fases principales del desarrollo.
 
-## 📋 Índice
 
-- [Introducción]
+## 📋 Contenido
+
 - [Fase 1: Construyendo diagramas con GenAI](FaseN1)
 - [Fase 2: Planeando un software con GenAI](FaseN2)
 - [Fase 3: Trabajando como Tech Lead con GenAI](FaseN3)
-
-## 🌟 Introducción
-
-Este proyecto tiene como objetivo resolver los desafíos presentados en el Workshop N°5. A lo largo de este documento, te guiaremos a través de las tres fases principales del desarrollo.
 
 ## 🛠️ Fase 1: Construyendo diagramas con GenAI
 
