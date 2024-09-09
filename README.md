@@ -4,10 +4,10 @@
 
 ## 📋 Índice
 
-- [Introducción](#introducción)
-- [Fase 1: Construyendo diagramas con GenAI](#fase-1-construyendo-diagramas-con-genai)
-- [Fase 2: Planeando un software con GenAI](#fase-2-planeando-un-software-con-genai)
-- [Fase 3: Trabajando como Tech Lead con GenAI](#fase-3-trabajando-como-tech-lead-con-genai)
+- [Introducción]
+- [Fase 1: Construyendo diagramas con GenAI](FaseN1)
+- [Fase 2: Planeando un software con GenAI](FaseN2)
+- [Fase 3: Trabajando como Tech Lead con GenAI](FaseN3)
 
 ## 🌟 Introducción
 
