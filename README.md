@@ -72,6 +72,20 @@ Ahora trabajaremos generando las User Stories y los Tasks (o tickets de Jira) pa
     - Estimación de esfuerzo (en horas):
     - Tareas Técnicas:
     - Notas
+# Notas Generales
+
+## 📝 Fase 1: Construyendo diagramas con GenAI
+
+Para obtener más detalles sobre la Fase 1, por favor abre el archivo README de la Fase 1.
+
+## 📝 Fase 2: Planeando un software con GenAI
+
+Para obtener más detalles sobre la Fase 2, por favor abre el archivo README de la Fase 2.
+
+## 💼 Fase 3: Trabajando como Tech Lead con GenAI
+
+Para obtener más detalles sobre la Fase 3, por favor abre el archivo README de la Fase 3.
+
 ---
 
 ¡Gracias por visitar el repositorio del Workshop N°5! Si tienes alguna pregunta, no dudes en abrir un issue o contactarnos. 😊
