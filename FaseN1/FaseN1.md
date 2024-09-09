@@ -88,3 +88,11 @@ sequenceDiagram
 ### CLAUDE
 
 ![Diagrama de arquitectura generado por CLAUDE](./src/images/claude-python-prompt-3.png)
+
+# Notas Generales
+
+Este apartado contiene la carpeta iniciativa, que corresponde al último punto de la fase 1 del workshop 5.
+
+"Describe, inspirándote en estos prompts (compara los dos LLMs), la prueba que estás realizando para tu proyecto (el demo que tienes pensado para el MVP). 
+
+Intenta describir todos los componentes clave a nivel arquitectónico y haz iteraciones hasta llegar a la versión que realmente refleje la prueba que deseas realizar. Genera el diagrama de secuencia, un diagrama de interacción de entidades y la arquitectura tentativa para AWS."
